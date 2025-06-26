@@ -25,13 +25,13 @@ fun HomePage() {
         colorMode = ColorMode.valueOf(savedTheme)
     }
 
-    ThemeSwitchButton(
+    /*ThemeSwitchButton(
         colorMode = colorMode,
         onClick = {
             colorMode = colorMode.opposite
             localStorage.setItem(Res.String.SAVED_THEME, colorMode.name)
         }
-    )
+    )*/
 
     Box(
         Modifier
