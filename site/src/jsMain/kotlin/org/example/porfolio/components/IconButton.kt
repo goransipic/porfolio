@@ -52,11 +52,11 @@ enum class SocialIcon(
 ) {
     Github(
         icon = Res.Icon.GITHUB,
-        link = "https://github.com/stevdza-san"
+        link = "https://github.com/goransipic"
     ),
     GithubLight(
         icon = Res.Icon.GITHUB_LIGHT,
-        link = "https://github.com/stevdza-san"
+        link = "https://github.com/goransipic"
     ),
     Gitlab(
         icon = Res.Icon.GITLAB,
@@ -68,10 +68,10 @@ enum class SocialIcon(
     ),
     Instagram(
         icon = Res.Icon.INSTAGRAM,
-        link = "https://www.instagram.com/stevdza_san"
+        link = "https://www.instagram.com/goransipic"
     ),
     InstagramLight(
         icon = Res.Icon.INSTAGRAM_LIGHT,
-        link = "https://www.instagram.com/stevdza_san"
+        link = "https://www.instagram.com/goransipic"
     )
 }
