@@ -17,7 +17,7 @@ import org.jetbrains.compose.web.css.*
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(SmoothColorStyle.toModifier().minHeight(100.vh)) {
+        Surface(SmoothColorStyle.toModifier().classNames("kobweb-box").minHeight(100.vh)) {
             content()
         }
     }
