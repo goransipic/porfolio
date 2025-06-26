@@ -46,7 +46,7 @@ import org.jetbrains.compose.web.dom.Text
 @Page
 @Composable
 fun AboutPage() {
-    var colorMode by ColorMode.currentState
+    val colorMode = ColorMode.current
 
     Box(
         Modifier
