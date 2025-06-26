@@ -1,9 +1,9 @@
-package com.example.website.components
+package org.example.porfolio.components
 
 import androidx.compose.runtime.Composable
-import com.example.website.styles.ButtonStyle
-import com.example.website.styles.SocialIconStyle
-import com.example.website.util.Res
+import org.example.porfolio.styles.ButtonStyle
+import org.example.porfolio.styles.SocialIconStyle
+import org.example.porfolio.util.Res
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement

@@ -1,9 +1,9 @@
-package com.example.website.pages
+package org.example.porfolio.pages
 
 import androidx.compose.runtime.*
-import com.example.website.components.ProfileCard
-import com.example.website.components.ThemeSwitchButton
-import com.example.website.util.Res
+import org.example.porfolio.components.ProfileCard
+import org.example.porfolio.components.ThemeSwitchButton
+import org.example.porfolio.util.Res
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.foundation.layout.Box

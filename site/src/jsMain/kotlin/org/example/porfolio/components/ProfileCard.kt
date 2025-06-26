@@ -1,7 +1,7 @@
-package com.example.website.components
+package org.example.porfolio.components
 
 import androidx.compose.runtime.Composable
-import com.example.website.util.Res
+import org.example.porfolio.util.Res
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*

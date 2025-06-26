@@ -1,8 +1,8 @@
-package com.example.website.components
+package org.example.porfolio.components
 
 import androidx.compose.runtime.Composable
-import com.example.website.util.Res
-import com.example.website.util.Res.Dimens.BORDER_RADIUS
+import org.example.porfolio.util.Res
+import org.example.porfolio.util.Res.Dimens.BORDER_RADIUS
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier

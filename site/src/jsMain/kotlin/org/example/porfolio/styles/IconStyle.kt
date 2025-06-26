@@ -1,6 +1,6 @@
-package com.example.website.styles
+package org.example.porfolio.styles
 
-import com.example.website.util.Res
+import org.example.porfolio.util.Res
 import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors

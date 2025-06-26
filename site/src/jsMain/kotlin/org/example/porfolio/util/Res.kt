@@ -1,4 +1,4 @@
-package com.example.website.util
+package org.example.porfolio.util
 
 import com.varabyte.kobweb.compose.ui.graphics.Color
 

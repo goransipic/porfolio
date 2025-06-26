@@ -1,10 +1,10 @@
-package com.example.website.components
+package org.example.porfolio.components
 
 import androidx.compose.runtime.Composable
-import com.example.website.styles.ThemeIconStyle
-import com.example.website.util.Res
-import com.example.website.util.Res.Dimens.ICON_SIZE
-import com.example.website.util.Res.Dimens.ICON_SIZE_LG
+import org.example.porfolio.styles.ThemeIconStyle
+import org.example.porfolio.util.Res
+import org.example.porfolio.util.Res.Dimens.ICON_SIZE
+import org.example.porfolio.util.Res.Dimens.ICON_SIZE_LG
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment

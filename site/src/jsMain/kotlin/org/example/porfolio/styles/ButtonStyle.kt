@@ -1,7 +1,6 @@
-package com.example.website.styles
+package org.example.porfolio.styles
 
 import com.varabyte.kobweb.compose.css.Transition
-import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.transition

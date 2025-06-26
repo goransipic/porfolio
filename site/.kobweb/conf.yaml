@@ -1,7 +1,8 @@
 site:
   title: "Porfolio"
   basePath: "porfolio"
-  appPackage: org.example.porfolio
+
+
 
 server:
   files:

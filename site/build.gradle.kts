@@ -1,4 +1,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.link
+import org.jetbrains.kotlin.com.intellij.openapi.util.text.HtmlChunk.link
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -14,6 +16,10 @@ kobweb {
     app {
         index {
             description.set("Powered by Kobweb")
+
+            head.add {
+                link(rel = "stylesheet", href = basePath.prependTo("fonts/faces.css"))
+            }
         }
     }
 }
