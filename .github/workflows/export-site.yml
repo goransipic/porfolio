@@ -1,7 +1,15 @@
 name: Export Kobweb site
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch: # Manually trigger from GitHub Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   export_and_upload:
@@ -55,10 +63,25 @@ jobs:
           cd site
           ../kobweb-${{ env.KOBWEB_CLI_VERSION }}/bin/kobweb export --notty --layout static
 
-      - name: Upload site
-        uses: actions/upload-artifact@v4
+
+      - name: List exported files
+        run: ls -R site/.kobweb/site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: site
           path: site/.kobweb/site/
-          if-no-files-found: error
-          retention-days: 1
+
+  deploy:
+    needs: export_and_upload
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages       # 👈 Required!
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
