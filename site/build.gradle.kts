@@ -18,7 +18,7 @@ kobweb {
             description.set("Powered by Kobweb")
 
             head.add {
-                link(rel = "stylesheet", href = basePath.prependTo("fonts/faces.css"))
+                link(rel = "stylesheet", href = basePath.prependTo("/fonts/faces.css"))
             }
         }
     }
