@@ -5,8 +5,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -21,8 +23,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.minWidth
+import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
@@ -33,6 +39,7 @@ import kotlinx.browser.localStorage
 import org.example.porfolio.components.ProfileCard
 import org.example.porfolio.components.ThemeSwitchButton
 import org.example.porfolio.util.Res
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Text
 
@@ -53,24 +60,43 @@ fun AboutPage() {
                     else Res.Theme.GRADIENT_TWO_DARK.color
                 )
             ),
-        contentAlignment = Alignment.Center
+        //contentAlignment = Alignment.Center
     ) {
-        Box(
-            Modifier.fillMaxWidth()
-                .backgroundColor(Res.Theme.GRADIENT_ONE.color)
+        Column(
+            Modifier.fillMaxSize()
+                //.backgroundColor(Res.Theme.GRADIENT_ONE.color)
                 .fontSize(30.px)
                 .color(colorMode.toPalette().color)
-                .height(70.px)
-                .align(
-                    Alignment.TopCenter
-                ),
-            contentAlignment = Alignment.Center
+            //.height(70.px),
+            ,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            SpanText("Header")
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .height(70.px)
+                    .backgroundColor(Res.Theme.GRADIENT_ONE.color), contentAlignment = Alignment.Center
+            ) {
+                SpanText("Header")
+            }
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.padding(top = 20.px).weight(1f)
+            ) {
+                SpanText(
+                    "Work in progress",
+                    Modifier.fontSize(40.px).fontWeight(FontWeight.Bold).margin(bottom = 30.px)
+                )
+                Image(
+                    "/image_split.jpg", modifier = Modifier.padding(10.px)
+                        .width(100.percent)
+                        .minWidth(300.px)
+                        .objectFit(ObjectFit.Contain)
+                )
+            }
         }
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            SpanText("Work in progress", Modifier.fontSize(40.px).fontWeight(FontWeight.Bold).margin(bottom = 30.px))
-            Image("/image_split.jpg")
-        }
+
     }
 }
