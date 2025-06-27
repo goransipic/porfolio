@@ -34,7 +34,7 @@ object Res {
     }
 
     object String {
-        const val NAME = "Goran Šipić & Helena Šantek"
+        const val NAME = "Goran Šipić"
         const val PROFESSION = "Html Team"
         const val ABOUT_ME =
             "Lorem ipsum dolor sit amet, nisl tempus lorem adipiscing elit. Donec sollicitudin blandit tellus, ac sagittis ligula egestas consequat. Lorem ipsum dolor sit amet."

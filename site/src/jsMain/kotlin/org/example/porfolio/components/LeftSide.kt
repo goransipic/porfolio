@@ -112,25 +112,7 @@ fun LeftSide(
                 text = Res.String.BUTTON_TEXT
             )
         }
-        val context = rememberPageContext()
-        Button(
-            modifier = ButtonStyle.toModifier()
-                .margin(bottom = 50.px),
-            size = ButtonSize.LG,
-            onClick = { context.router.navigateTo("about") }
-        ) {
-            SpanText(
-                modifier = Modifier
-                    .fontSize(14.px)
-                    .color(
-                        if (colorMode.isLight) Colors.White
-                        else Res.Theme.GRADIENT_ONE_DARK.color
-                    )
-                    .fontWeight(FontWeight.Bold)
-                    .fontFamily(Res.String.ROBOTO_REGULAR),
-                text = Res.String.ABOUT_TEXT
-            )
-        }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
