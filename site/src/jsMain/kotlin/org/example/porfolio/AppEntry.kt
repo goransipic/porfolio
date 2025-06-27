@@ -3,7 +3,7 @@ package org.example.porfolio
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.maxHeight
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
@@ -14,6 +14,7 @@ import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.button
 import org.example.porfolio.util.Res
+import org.jetbrains.compose.web.css.vh
 
 
 @InitSilk
@@ -25,7 +26,7 @@ fun initStyles(ctx: InitSilkContext) {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
-        Surface(SmoothColorStyle.toModifier().fillMaxSize()) {
+        Surface(SmoothColorStyle.toModifier().maxHeight(100.vh)) {
             content()
         }
     }
