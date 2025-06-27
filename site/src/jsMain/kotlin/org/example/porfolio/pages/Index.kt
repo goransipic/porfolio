@@ -15,6 +15,7 @@ import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.localStorage
 import org.example.porfolio.components.ProfileCard
+import org.example.porfolio.components.ThemeSwitchButton
 import org.example.porfolio.util.Res
 import org.jetbrains.compose.web.css.vh
 
@@ -28,13 +29,13 @@ fun HomePage() {
         colorMode = ColorMode.valueOf(savedTheme)
     }
 
-    /*ThemeSwitchButton(
+    ThemeSwitchButton(
         colorMode = colorMode,
         onClick = {
             colorMode = colorMode.opposite
             localStorage.setItem(Res.String.SAVED_THEME, colorMode.name)
         }
-    )*/
+    )
 
     Box(
         Modifier

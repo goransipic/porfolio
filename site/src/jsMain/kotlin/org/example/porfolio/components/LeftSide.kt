@@ -1,6 +1,7 @@
 package org.example.porfolio.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import org.example.porfolio.styles.ButtonStyle
 import org.example.porfolio.styles.SocialIconStyle
 import org.example.porfolio.util.Res
@@ -13,6 +14,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonSize
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -89,7 +91,7 @@ fun LeftSide(
         )
         Button(
             modifier = ButtonStyle.toModifier()
-                .margin(bottom = 50.px),
+                .margin(bottom = 25.px),
             size = ButtonSize.LG,
             onClick = { window.location.href = Res.String.MY_EMAIL }
         ) {
@@ -108,6 +110,25 @@ fun LeftSide(
                     .fontWeight(FontWeight.Bold)
                     .fontFamily(Res.String.ROBOTO_REGULAR),
                 text = Res.String.BUTTON_TEXT
+            )
+        }
+        val context = rememberPageContext()
+        Button(
+            modifier = ButtonStyle.toModifier()
+                .margin(bottom = 50.px),
+            size = ButtonSize.LG,
+            onClick = { context.router.navigateTo("about") }
+        ) {
+            SpanText(
+                modifier = Modifier
+                    .fontSize(14.px)
+                    .color(
+                        if (colorMode.isLight) Colors.White
+                        else Res.Theme.GRADIENT_ONE_DARK.color
+                    )
+                    .fontWeight(FontWeight.Bold)
+                    .fontFamily(Res.String.ROBOTO_REGULAR),
+                text = Res.String.ABOUT_TEXT
             )
         }
         Row(

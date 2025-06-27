@@ -39,6 +39,7 @@ object Res {
         const val ABOUT_ME =
             "Lorem ipsum dolor sit amet, nisl tempus lorem adipiscing elit. Donec sollicitudin blandit tellus, ac sagittis ligula egestas consequat. Lorem ipsum dolor sit amet."
         const val BUTTON_TEXT = "Get in touch"
+        const val ABOUT_TEXT = "About me"
         const val ROBOTO_CONDENSED = "RobotoCondensedBold"
         const val ROBOTO_REGULAR = "RobotoRegular"
         const val MY_EMAIL = "mailto:goran.sipic@gmail.com"
