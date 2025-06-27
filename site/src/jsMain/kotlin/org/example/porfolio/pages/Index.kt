@@ -1,19 +1,22 @@
 package org.example.porfolio.pages
 
-import androidx.compose.runtime.*
-import org.example.porfolio.components.ProfileCard
-import org.example.porfolio.components.ThemeSwitchButton
-import org.example.porfolio.util.Res
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.localStorage
+import org.example.porfolio.components.ProfileCard
+import org.example.porfolio.util.Res
+import org.jetbrains.compose.web.css.vh
 
 @Page
 @Composable
@@ -35,7 +38,7 @@ fun HomePage() {
 
     Box(
         Modifier
-            .fillMaxSize()
+            .minHeight(100.vh)
             .backgroundImage(
                 linearGradient(
                     dir = LinearGradient.Direction.ToRight,
