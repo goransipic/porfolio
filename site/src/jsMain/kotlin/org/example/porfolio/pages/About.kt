@@ -24,6 +24,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.minWidth
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -41,6 +42,7 @@ import org.example.porfolio.components.ThemeSwitchButton
 import org.example.porfolio.util.Res
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Text
 
 @Page
@@ -50,7 +52,7 @@ fun AboutPage() {
 
     Box(
         Modifier
-            .fillMaxSize()
+            .minHeight(100.vh)
             .backgroundImage(
                 linearGradient(
                     dir = LinearGradient.Direction.ToRight,
