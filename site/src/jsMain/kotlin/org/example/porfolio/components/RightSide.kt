@@ -11,18 +11,22 @@ import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.px
 
+val RightSideStyle = CssStyle {
+    Breakpoint.LG {
+        Modifier.height((Res.Dimens.MAX_CARD_HEIGHT - 24).px)
+    }
+}
+
 @Composable
-fun RightSide(breakpoint: Breakpoint) {
+fun RightSide() {
     Box(
-        modifier = Modifier
+        modifier = RightSideStyle.toModifier()
             .fillMaxWidth()
-            .thenIf(
-                condition = breakpoint > Breakpoint.MD,
-                other = Modifier.height((Res.Dimens.MAX_CARD_HEIGHT - 24).px)
-            )
     ) {
         Image(
             modifier = Modifier

@@ -1,7 +1,6 @@
 package org.example.porfolio.components
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import org.example.porfolio.styles.ButtonStyle
 import org.example.porfolio.styles.SocialIconStyle
 import org.example.porfolio.util.Res
@@ -10,17 +9,21 @@ import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.foundation.layout.columnClasses
+import com.varabyte.kobweb.compose.foundation.layout.rowClasses
+import com.varabyte.kobweb.compose.style.toClassName
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.AppGlobals
-import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonSize
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
@@ -28,31 +31,78 @@ import kotlinx.browser.window
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
+val LeftSideStyle = CssStyle {
+
+    (Breakpoint.ZERO..Breakpoint.SM) {
+        Modifier.columnClasses(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        )
+    }
+
+    Breakpoint.MD {
+        Modifier.columnClasses(
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Center
+        )
+    }
+
+}
+
+val SpanStyle = CssStyle {
+    (Breakpoint.ZERO..Breakpoint.SM) {
+        Modifier.textAlign(TextAlign.Center)
+    }
+    Breakpoint.MD {
+        Modifier.textAlign(TextAlign.Start)
+    }
+}
+
+val SurfaceStyle = CssStyle {
+    (Breakpoint.ZERO..Breakpoint.SM) {
+        Modifier.align(
+            Alignment.CenterHorizontally
+        )
+    }
+    Breakpoint.MD {
+        Modifier.align(Alignment.Start)
+    }
+}
+
+val RowStyle = CssStyle {
+    Breakpoint.ZERO {
+        Modifier.rowClasses(Arrangement.Start)
+    }
+
+    (Breakpoint.ZERO..Breakpoint.SM) {
+        Modifier.rowClasses(
+            horizontalArrangement = Arrangement.Center
+        )
+    }
+}
+
+fun Modifier.align(alignment: Alignment.Horizontal) = attrsModifier {
+    classes("${alignment.toClassName()}-self")
+}
+
 @Composable
 fun LeftSide(
-    colorMode: ColorMode,
-    breakpoint: Breakpoint
+    colorMode: ColorMode
 ) {
     Column(
-        modifier = Modifier
+        modifier = LeftSideStyle.toModifier()
             .fillMaxSize()
             .padding(all = 50.px),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = if (breakpoint <= Breakpoint.SM)
-            Alignment.CenterHorizontally else Alignment.Start
-    ) {
+
+        ) {
         SpanText(
             text = Res.String.NAME,
-            modifier = Modifier
+            modifier = SpanStyle.toModifier()
                 .margin(bottom = 12.px)
                 .fontFamily(Res.String.ROBOTO_CONDENSED)
                 .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .fontSize(50.px)
                 .fontWeight(FontWeight.Bold)
-                .textAlign(
-                    if (breakpoint <= Breakpoint.SM) TextAlign.Center
-                    else TextAlign.Start
-                )
         )
         SpanText(
             text = Res.String.PROFESSION,
@@ -71,7 +121,7 @@ fun LeftSide(
                 .fontSize(18.px)
         )
         Surface(
-            modifier = Modifier
+            modifier = SurfaceStyle.toModifier()
                 .height(4.px)
                 .width(40.px)
                 .margin(bottom = 24.px)
@@ -79,23 +129,16 @@ fun LeftSide(
                     if (colorMode.isLight) Res.Theme.BLUE.color
                     else Res.Theme.LIGHT_BLUE.color
                 )
-                .align(
-                    if (breakpoint <= Breakpoint.SM) Alignment.CenterHorizontally
-                    else Alignment.Start
-                )
+
         ) {}
         SpanText(
-            modifier = Modifier
+            modifier = SpanStyle.toModifier()
                 .fontFamily(Res.String.ROBOTO_REGULAR)
                 .fontSize(14.px)
                 .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .opacity(50.percent)
                 .lineHeight(2)
-                .margin(bottom = 36.px)
-                .textAlign(
-                    if (breakpoint <= Breakpoint.SM) TextAlign.Center
-                    else TextAlign.Start
-                ),
+                .margin(bottom = 36.px),
             text = Res.String.ABOUT_ME
         )
         Button(
@@ -123,12 +166,11 @@ fun LeftSide(
         }
 
         Row(
-            modifier = Modifier
+            modifier = RowStyle.toModifier()
                 .fillMaxWidth()
                 .gap(12.px),
-            horizontalArrangement = if (breakpoint <= Breakpoint.SM)
-                Arrangement.Center else Arrangement.Start
-        ) {
+
+            ) {
             SocialIcon.entries.filter {
                 if (colorMode.isLight) !it.name.contains("Light")
                 else it.name.contains("Light")
