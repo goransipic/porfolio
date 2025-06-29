@@ -14,6 +14,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonSize
@@ -55,6 +56,14 @@ fun LeftSide(
         )
         SpanText(
             text = Res.String.PROFESSION,
+            modifier = Modifier
+                .margin(bottom = 24.px)
+                .fontFamily(Res.String.ROBOTO_REGULAR)
+                .color(if (colorMode.isLight) Colors.Black else Colors.White)
+                .fontSize(18.px)
+        )
+        SpanText(
+            text = AppGlobals.getValue("version"),
             modifier = Modifier
                 .margin(bottom = 24.px)
                 .fontFamily(Res.String.ROBOTO_REGULAR)
