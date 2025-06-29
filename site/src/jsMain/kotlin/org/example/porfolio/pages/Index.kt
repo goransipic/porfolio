@@ -28,11 +28,6 @@ import org.jetbrains.compose.web.css.vh
 fun HomePage() {
     var colorMode by ColorMode.currentState
 
-    LaunchedEffect(colorMode) {
-        val savedTheme = localStorage.getItem(COLOR_MODE_KEY.name) ?: ColorMode.LIGHT.name
-        colorMode = ColorMode.valueOf(savedTheme)
-    }
-
     ThemeSwitchButton(
         colorMode = colorMode,
         onClick = {
