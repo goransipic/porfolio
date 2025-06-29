@@ -17,6 +17,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.localStorage
+import org.example.porfolio.COLOR_MODE_KEY
 import org.example.porfolio.components.ProfileCard
 import org.example.porfolio.components.ThemeSwitchButton
 import org.example.porfolio.util.Res
@@ -28,7 +29,7 @@ fun HomePage() {
     var colorMode by ColorMode.currentState
 
     LaunchedEffect(colorMode) {
-        val savedTheme = localStorage.getItem(Res.String.SAVED_THEME) ?: ColorMode.LIGHT.name
+        val savedTheme = localStorage.getItem(COLOR_MODE_KEY.name) ?: ColorMode.LIGHT.name
         colorMode = ColorMode.valueOf(savedTheme)
     }
 
@@ -36,7 +37,7 @@ fun HomePage() {
         colorMode = colorMode,
         onClick = {
             colorMode = colorMode.opposite
-            localStorage.setItem(Res.String.SAVED_THEME, colorMode.name)
+            localStorage.setItem(COLOR_MODE_KEY.name, colorMode.name)
         }
     )
     val breakPoint = rememberBreakpoint()
