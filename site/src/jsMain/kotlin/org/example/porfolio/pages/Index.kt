@@ -28,6 +28,10 @@ import org.jetbrains.compose.web.css.vh
 fun HomePage() {
     var colorMode by ColorMode.currentState
 
+    LaunchedEffect(colorMode) {
+        localStorage.setItem(COLOR_MODE_KEY.name, colorMode.name)
+    }
+
     ThemeSwitchButton(
         colorMode = colorMode,
         onClick = {
