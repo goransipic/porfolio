@@ -1,6 +1,10 @@
 package org.example.porfolio
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import com.varabyte.kobweb.browser.storage.setItem
 import com.varabyte.kobweb.browser.storage.createStorageKey
 import com.varabyte.kobweb.browser.storage.getItem
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -19,6 +23,7 @@ import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.button
+import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import org.example.porfolio.util.Res
@@ -30,7 +35,7 @@ val COLOR_MODE_KEY = ColorMode.entries.createStorageKey("app:colorMode")
 fun initStyles(ctx: InitSilkContext) {
 
     ctx.config.apply {
-        initialColorMode = localStorage.getItem(COLOR_MODE_KEY) ?: ColorMode.DARK
+        initialColorMode = localStorage.getItem(COLOR_MODE_KEY) ?: ColorMode.systemPreference
 
         // Script which runs at load time that needs to be kept in sync with `initialColorMode` above. This code checks
         // if the user's local color mode preference is different from what was exported by Kobweb, replacing it if
@@ -41,7 +46,9 @@ fun initStyles(ctx: InitSilkContext) {
                     textContent = """
                         {
                             const storedColor = localStorage.getItem('${COLOR_MODE_KEY.name}'); // 'LIGHT', 'DARK', or null
-                            const desiredColor = storedColor ? `silk-${'$'}{storedColor.toLowerCase()}` : 'silk-dark';
+                            const desiredColor = storedColor
+                                ? `silk-${'$'}{storedColor.toLowerCase()}`
+                                : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'silk-dark' : 'silk-light');
                             const oppositeColor = desiredColor === 'silk-dark' ? 'silk-light' : 'silk-dark';
                             document.documentElement.classList.replace(oppositeColor, desiredColor);
                         }
@@ -58,6 +65,10 @@ fun initStyles(ctx: InitSilkContext) {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
+        val colorMode = ColorMode.current
+        LaunchedEffect(colorMode) {
+            localStorage.setItem(COLOR_MODE_KEY, colorMode)
+        }
         Surface(SmoothColorStyle.toModifier().fillMaxSize()) {
             content()
         }

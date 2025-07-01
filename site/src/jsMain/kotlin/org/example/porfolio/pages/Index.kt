@@ -3,45 +3,70 @@ package org.example.porfolio.pages
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.varabyte.kobweb.browser.storage.setItem
+import com.varabyte.kobweb.compose.css.AlignItems
+import com.varabyte.kobweb.compose.css.JustifyItems
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
-import com.varabyte.kobweb.compose.ui.modifiers.minHeight
+import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.localStorage
 import org.example.porfolio.COLOR_MODE_KEY
+import org.example.porfolio.components.BoxCostume
 import org.example.porfolio.components.ProfileCard
 import org.example.porfolio.components.ThemeSwitchButton
 import org.example.porfolio.util.Res
-import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.fr
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Div
+
+
+val HomeStyle = CssStyle {
+    base {
+        Modifier
+            .display(DisplayStyle.Grid)
+            .gridTemplateColumns {
+                minmax(0.px, 1.fr)
+            }
+            .gridTemplateRows {
+                minmax(0.px, 1.fr)
+            }
+    }
+
+    cssRule(Breakpoint.MD.toCSSMediaQuery(), ".kobweb-align") {
+        Modifier.placeItems(AlignItems.Center, JustifyItems.Center)
+    }
+
+    cssRule((Breakpoint.ZERO..Breakpoint.SM).toCSSMediaQuery(), ".kobweb-align") {
+        Modifier.placeItems(AlignItems.Start, JustifyItems.Center)
+    }
+}
 
 @Page
 @Composable
 fun HomePage() {
     var colorMode by ColorMode.currentState
-
-    LaunchedEffect(colorMode) {
-        localStorage.setItem(COLOR_MODE_KEY.name, colorMode.name)
-    }
-
     ThemeSwitchButton(
         colorMode = colorMode,
         onClick = {
             colorMode = colorMode.opposite
-            localStorage.setItem(COLOR_MODE_KEY.name, colorMode.name)
         }
     )
     val breakPoint = rememberBreakpoint()
-    Box(
-        Modifier
+    /*Box(
+        HomeStyle.toModifier()
             .fillMaxHeight()
             .backgroundImage(
                 linearGradient(
@@ -54,6 +79,20 @@ fun HomePage() {
             ),
         contentAlignment = if (breakPoint <= Breakpoint.SM) Alignment.TopCenter else Alignment.Center
     ) {
+        ProfileCard(colorMode = colorMode)
+    }*/
+    BoxCostume(
+        modifier = Modifier
+            .fillMaxHeight()
+            .backgroundImage(
+                linearGradient(
+                    dir = LinearGradient.Direction.ToRight,
+                    from = if (colorMode.isLight) Res.Theme.GRADIENT_ONE.color
+                    else Res.Theme.GRADIENT_ONE_DARK.color,
+                    to = if (colorMode.isLight) Res.Theme.GRADIENT_TWO.color
+                    else Res.Theme.GRADIENT_TWO_DARK.color
+                )
+            )) {
         ProfileCard(colorMode = colorMode)
     }
 }
