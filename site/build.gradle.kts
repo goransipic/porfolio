@@ -1,8 +1,7 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
-import org.jetbrains.kotlin.com.intellij.openapi.util.text.HtmlChunk.link
-import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
@@ -17,11 +16,14 @@ version = "1.0-SNAPSHOT"
 
 kobweb {
     app {
+        val croatiaZone = ZoneId.of("Europe/Zagreb")
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+
         globals.put(
             "version",
-            LocalDateTime
-                .now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd.kk:mm"))
+            ZonedDateTime
+                .now(croatiaZone)
+                .format(formatter)
         )
         index {
             description.set("Powered by Kobweb")

@@ -116,14 +116,7 @@ fun LeftSide(
                 .color(if (colorMode.isLight) Colors.Black else Colors.White)
                 .fontSize(18.px)
         )
-        SpanText(
-            text = AppGlobals.getValue("version"),
-            modifier = Modifier
-                .margin(bottom = 24.px)
-                .fontFamily(Res.String.ROBOTO_REGULAR)
-                .color(if (colorMode.isLight) Colors.Black else Colors.White)
-                .fontSize(18.px)
-        )
+
         Surface(
             modifier = SurfaceStyle.toModifier()
                 .height(4.px)
@@ -173,7 +166,8 @@ fun LeftSide(
             modifier = RowStyle.toModifier()
                 .fillMaxWidth()
                 .gap(12.px),
-
+            horizontalArrangement = if (breakpoint <= Breakpoint.SM)
+                Arrangement.Center else Arrangement.Start
             ) {
             SocialIcon.entries.filter {
                 if (colorMode.isLight) !it.name.contains("Light")
