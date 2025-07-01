@@ -26,6 +26,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.percent
@@ -89,11 +90,14 @@ fun Modifier.align(alignment: Alignment.Horizontal) = attrsModifier {
 fun LeftSide(
     colorMode: ColorMode
 ) {
+    val breakpoint = rememberBreakpoint()
     Column(
-        modifier = LeftSideStyle.toModifier()
+        modifier = Modifier
             .fillMaxSize()
             .padding(all = 50.px),
-
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = if (breakpoint <= Breakpoint.SM)
+            Alignment.CenterHorizontally else Alignment.Start
         ) {
         SpanText(
             text = Res.String.NAME,
