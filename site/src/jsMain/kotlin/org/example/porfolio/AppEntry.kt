@@ -85,9 +85,9 @@ fun initStyles(ctx: InitSilkContext) {
                                 console.log("Hello, world!");
                                 var preloader = document.querySelector('.page-loading');
                                 preloader.classList.remove('active');
-                                preloader.remove();
-                                setTimeout(function () {
                                 
+                                setTimeout(function () {
+                                    preloader.remove();
                                 }, 2000);
                                 };
                                 })();
