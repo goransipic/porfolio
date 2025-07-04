@@ -26,14 +26,16 @@ import com.varabyte.kobweb.silk.theme.colors.palette.button
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
+import org.example.porfolio.styles.registerCustomStyles
 import org.example.porfolio.util.Res
 import org.jetbrains.compose.web.css.vh
+import org.w3c.dom.HTMLElement
 
 val COLOR_MODE_KEY = ColorMode.entries.createStorageKey("app:colorMode")
 
 @InitSilk
 fun initStyles(ctx: InitSilkContext) {
-
+    ctx.stylesheet.registerCustomStyles()
     ctx.config.apply {
         initialColorMode = localStorage.getItem(COLOR_MODE_KEY) ?: ColorMode.systemPreference
 
@@ -52,6 +54,44 @@ fun initStyles(ctx: InitSilkContext) {
                             const oppositeColor = desiredColor === 'silk-dark' ? 'silk-light' : 'silk-dark';
                             document.documentElement.classList.replace(oppositeColor, desiredColor);
                         }
+                        """.trimIndent()
+                })
+        }
+        if (AppGlobals.isExporting) {
+            val htmlString = """
+                <!-- Page loading spinner-->
+                <div class="page-loading active">
+                    <div class="page-loading-inner">
+                        <div class="page-spinner"></div><span>Loading...</span>
+                    </div>
+                </div>
+            """.trimIndent()
+            document.body?.insertAdjacentHTML("afterbegin", htmlString);
+            val element = document.getElementById("_kobweb-root") as? HTMLElement
+            /*element?.apply {
+               style.display = "none"
+                style.position = "relative" // Required for z-index to work
+                style.zIndex = "0"       // Bring element to front
+            }*/
+
+        }
+        if(!AppGlobals.isExporting){
+            document.head!!.appendChild(
+                document.createElement("script").apply {
+                    textContent = """
+                        {
+                            (function () {
+                                window.onload = function () {
+                                console.log("Hello, world!");
+                                var preloader = document.querySelector('.page-loading');
+                                preloader.classList.remove('active');
+                                preloader.remove();
+                                setTimeout(function () {
+                                
+                                }, 2000);
+                                };
+                                })();
+                            }
                         """.trimIndent()
                 })
         }
