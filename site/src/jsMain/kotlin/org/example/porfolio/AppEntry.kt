@@ -53,7 +53,7 @@ fun initStyles(ctx: InitSilkContext) {
                         """.trimIndent()
                 })
         }
-        if (AppGlobals.isExporting) {
+        if (AppGlobals.isExporting) { // this works with inserting page loading but i dont know how????
             val htmlString = """
                 <!-- Page loading spinner-->
                 <div class="page-loading active">
