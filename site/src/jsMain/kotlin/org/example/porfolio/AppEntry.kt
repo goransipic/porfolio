@@ -66,8 +66,9 @@ fun initStyles(ctx: InitSilkContext) {
                     </div>
                 </div>
             """.trimIndent()
-            document.body?.insertAdjacentHTML("afterbegin", htmlString);
+            //document.body?.insertAdjacentHTML("afterbegin", htmlString);
             val element = document.getElementById("_kobweb-root") as? HTMLElement
+            element?.insertAdjacentHTML("afterbegin", htmlString)
             /*element?.apply {
                style.display = "none"
                 style.position = "relative" // Required for z-index to work
@@ -75,7 +76,7 @@ fun initStyles(ctx: InitSilkContext) {
             }*/
 
         }
-        if(!AppGlobals.isExporting){
+        /*if(!AppGlobals.isExporting){
             document.head!!.appendChild(
                 document.createElement("script").apply {
                     textContent = """
@@ -94,7 +95,7 @@ fun initStyles(ctx: InitSilkContext) {
                             }
                         """.trimIndent()
                 })
-        }
+        }*/
 
     }
 
