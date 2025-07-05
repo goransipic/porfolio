@@ -2,15 +2,12 @@ package org.example.porfolio
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import com.varabyte.kobweb.browser.storage.setItem
 import com.varabyte.kobweb.browser.storage.createStorageKey
 import com.varabyte.kobweb.browser.storage.getItem
+import com.varabyte.kobweb.browser.storage.setItem
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.core.AppGlobals
 import com.varabyte.kobweb.core.isExporting
@@ -28,7 +25,6 @@ import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import org.example.porfolio.styles.registerCustomStyles
 import org.example.porfolio.util.Res
-import org.jetbrains.compose.web.css.vh
 import org.w3c.dom.HTMLElement
 
 val COLOR_MODE_KEY = ColorMode.entries.createStorageKey("app:colorMode")
