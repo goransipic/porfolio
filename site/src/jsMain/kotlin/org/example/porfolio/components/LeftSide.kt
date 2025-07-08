@@ -29,6 +29,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import kotlinx.browser.window
+import org.example.porfolio.components.widget.ShimmerImage
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
@@ -98,7 +99,7 @@ fun LeftSide(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = if (breakpoint <= Breakpoint.SM)
             Alignment.CenterHorizontally else Alignment.Start
-        ) {
+    ) {
         SpanText(
             text = Res.String.NAME,
             modifier = SpanStyle.toModifier()
@@ -144,8 +145,9 @@ fun LeftSide(
             size = ButtonSize.LG,
             onClick = { window.location.href = Res.String.MY_EMAIL }
         ) {
-            Image(
+            ShimmerImage(
                 modifier = Modifier.margin(right = 12.px),
+                width = 20.px, height = 20.px,
                 src = if (colorMode.isLight) Res.Icon.EMAIL_LIGHT
                 else Res.Icon.EMAIL_DARK
             )
@@ -168,7 +170,7 @@ fun LeftSide(
                 .gap(12.px),
             horizontalArrangement = if (breakpoint <= Breakpoint.SM)
                 Arrangement.Center else Arrangement.Start
-            ) {
+        ) {
             SocialIcon.entries.filter {
                 if (colorMode.isLight) !it.name.contains("Light")
                 else it.name.contains("Light")
