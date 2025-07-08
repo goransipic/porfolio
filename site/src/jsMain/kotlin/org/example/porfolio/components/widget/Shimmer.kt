@@ -97,7 +97,7 @@ fun ShimmerImage(
             //.borderRadius(if (loaded) 0.px else 12.px)
             .position(Position.Relative)
             .overflow(Overflow.Hidden)
-            .backgroundColor(if (loaded) Colors.Transparent else Color.rgb(238, 238, 238)).then(modifier)
+            //.backgroundColor(if (loaded) Colors.Transparent else Color.rgb(238, 238, 238)).then(modifier)
     ) {
         if (!loaded) {
             // Show shimmer background until image is loaded
