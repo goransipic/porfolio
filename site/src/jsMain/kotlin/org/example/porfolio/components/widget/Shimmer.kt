@@ -96,17 +96,17 @@ fun ShimmerImage(
             .height(height)
             //.borderRadius(if (loaded) 0.px else 12.px)
             .position(Position.Relative)
-            .overflow(Overflow.Hidden)
+            .overflow(Overflow.Hidden).then(modifier)
             //.backgroundColor(if (loaded) Colors.Transparent else Color.rgb(238, 238, 238)).then(modifier)
     ) {
-        if (!loaded) {
+        /*if (!loaded) {
             // Show shimmer background until image is loaded
             Box(
                 modifier = ShimmerStyle.toModifier()
                     .backgroundColor(Colors.White)
                     .fillMaxSize()
             )
-        }
+        }*/
 
         Image(
             src = src,
