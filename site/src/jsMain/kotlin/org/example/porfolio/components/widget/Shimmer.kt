@@ -94,7 +94,7 @@ fun ShimmerImage(
         modifier = Modifier
             .width(width)
             .height(height)
-            .borderRadius(if (loaded) 0.px else 12.px)
+            //.borderRadius(if (loaded) 0.px else 12.px)
             .position(Position.Relative)
             .overflow(Overflow.Hidden)
             .backgroundColor(if (loaded) Colors.Transparent else Color.rgb(238, 238, 238)).then(modifier)
