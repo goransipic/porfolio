@@ -88,7 +88,7 @@ fun ShimmerImage(
     height: CSSLengthValue = 200.px,
     alt: String = ""
 ) {
-    var loaded by remember { mutableStateOf(false) }
+    //var loaded by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -117,18 +117,18 @@ fun ShimmerImage(
                 .position(Position.Absolute)
                 .top(0.px)
                 .left(0.px)
-                .opacity(if (loaded) 1 else 0)
+                //.opacity(if (loaded) 1 else 0)
                 .objectFit(ObjectFit.Cover)
-                .transition(
+                /*.transition(
                     Transition.of(
                         "opacity",
                         duration = 0.3.s,
                         timingFunction = AnimationTimingFunction.EaseInOut
                     )
-                ),
+                )*/,
             ref = ref { element ->
                 element.onload = {
-                    loaded = true
+                    //loaded = true
                 }
             }
         )
