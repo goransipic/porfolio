@@ -18,6 +18,8 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.vars.color.BackgroundColorVar
+import com.varabyte.kobweb.silk.style.vars.color.ColorVar
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -50,7 +52,7 @@ fun SilkStylesheet.registerCustomStyles() {
                 property("-webkit-transition", "all .4s .2s ease-in-out")
             }
             .transition(Transition.of("all", 0.4.s, TransitionTimingFunction.EaseInOut, 0.2.s))
-            .backgroundColor(Color.rgb(0x1f1b2d))
+            .backgroundColor(BackgroundColorVar.value())
             .opacity(0)
             .visibility(Visibility.Hidden)
             .zIndex(9999)
@@ -88,7 +90,7 @@ fun SilkStylesheet.registerCustomStyles() {
                 .display(DisplayStyle.Block)
                 .fontSize(1.cssRem)
                 .fontWeight(FontWeight.Normal)
-                .color(Color.rgb(0xffffff))
+                .color(ColorVar.value())
         }
     }
     registerStyleBase(".page-spinner") {
