@@ -3,6 +3,7 @@ package org.example.porfolio.components
 import androidx.compose.runtime.Composable
 import org.example.porfolio.util.Res
 import com.varabyte.kobweb.compose.css.ObjectFit
+import com.varabyte.kobweb.compose.css.objectFit
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -14,7 +15,13 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.display
+import org.jetbrains.compose.web.css.height
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.width
+import org.jetbrains.compose.web.dom.Img
 
 val RightSideStyle = CssStyle {
     Breakpoint.LG {
@@ -28,11 +35,41 @@ fun RightSide() {
         modifier = RightSideStyle.toModifier()
             .fillMaxWidth()
     ) {
-        Image(
+       /* Image(
             modifier = Modifier
                 .fillMaxSize()
                 .objectFit(ObjectFit.Cover),
             src = Res.Image.PROFILE_SPLIT
-        )
+        )*/
+        ResponsiveSrcSetImage()
     }
+}
+
+//488
+@Composable
+fun ResponsiveSrcSetImage() {
+    Img(
+        src = "/images/image_split_1.jpg", // fallback
+        attrs = {
+            attr(
+                "srcset", """
+                    image_split_1.jpg 900w,
+                    image_split.jpg 2000w
+                """.trimIndent()
+            )
+            attr(
+                "sizes", """
+                    (max-width: 480px) 100vw,
+                    488px
+                """.trimIndent()
+            )
+            attr("alt", "Responsive image using srcset")
+            style {
+                width(100.percent)
+                height(100.percent)
+                display(DisplayStyle.Block)
+                objectFit(ObjectFit.Cover)
+            }
+        }
+    )
 }
