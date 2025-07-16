@@ -30,7 +30,7 @@ object Res {
 
     object Image {
         const val PROFILE_PHOTO = "photo.jpg"
-        const val PROFILE_SPLIT = "image_split.jpg"
+        const val PROFILE_SPLIT = "image_split.webp"
     }
 
     object String {

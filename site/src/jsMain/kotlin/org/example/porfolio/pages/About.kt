@@ -52,7 +52,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun AboutPage() {
     val colorMode = ColorMode.current
-    val images = listOf("/image_split.jpg", "/photo.jpg", "/image_split.jpg")
+    val images = listOf("/image_split.webp", "/photo.jpg", "/image_split.webp")
     val slideWidth = 600 // px
     val slideHeight = 400
     var currentSlide by remember { mutableStateOf(0) }
