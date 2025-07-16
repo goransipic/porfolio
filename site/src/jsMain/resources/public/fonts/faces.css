@@ -1,9 +1,11 @@
 @font-face {
   font-family: 'RobotoRegular';
   src: url('roboto_regular.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'RobotoCondensedBold';
-    src: url('roboto_regular.ttf')
+    src: url('roboto_regular.ttf');
+    font-display: swap;
 }
