@@ -49,12 +49,12 @@ fun RightSide() {
 @Composable
 fun ResponsiveSrcSetImage() {
     Img(
-        src = "/images/image_split_1.jpg", // fallback
+        src = "/images/image_split_1.webp", // fallback
         attrs = {
             attr(
                 "srcset", """
-                    image_split_1.jpg 488w,
-                    image_split.jpg 976w
+                    image_split_1.webp 488w,
+                    image_split.webp 1000w
                 """.trimIndent()
             ) // this 50vw is not correct its must be 100vw
             attr(
