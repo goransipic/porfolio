@@ -53,13 +53,13 @@ fun ResponsiveSrcSetImage() {
         attrs = {
             attr(
                 "srcset", """
-                    image_split_1.jpg 900w,
-                    image_split.jpg 2000w
+                    image_split_1.jpg 488w,
+                    image_split.jpg 976w
                 """.trimIndent()
-            )
+            ) // this 50vw is not correct its must be 100vw
             attr(
                 "sizes", """
-                    (max-width: 480px) 100vw,
+                    (max-width: 425px) 50vw,
                     488px
                 """.trimIndent()
             )
