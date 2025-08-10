@@ -44,6 +44,11 @@ kotlin {
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
+            implementation("dev.gitlive:firebase-app:2.1.0")
+            implementation("dev.gitlive:firebase-auth:2.1.0")
+            implementation("dev.gitlive:firebase-firestore:2.1.0")
+            implementation(npm("validator", "13.15.15")) // Or latest version)
+            implementation(npm("yup","1.6.1"))
             //implementation(libs.silk.icons.fa)
             // implementation(libs.kobwebx.markdown)
             

@@ -69,11 +69,11 @@ fun HomePage() {
             .fillMaxHeight()
             .backgroundImage(
                 linearGradient(
-                    dir = LinearGradient.Direction.ToRight,
-                    from = if (colorMode.isLight) Res.Theme.GRADIENT_ONE.color
+                    if (colorMode.isLight) Res.Theme.GRADIENT_ONE.color
                     else Res.Theme.GRADIENT_ONE_DARK.color,
-                    to = if (colorMode.isLight) Res.Theme.GRADIENT_TWO.color
-                    else Res.Theme.GRADIENT_TWO_DARK.color
+                    if (colorMode.isLight) Res.Theme.GRADIENT_TWO.color
+                    else Res.Theme.GRADIENT_TWO_DARK.color,
+                   LinearGradient.Direction.ToRight
                 )
             ),
         verticalArrangement = if (breakPoint <= Breakpoint.SM) Arrangement.Top else Arrangement.Center,

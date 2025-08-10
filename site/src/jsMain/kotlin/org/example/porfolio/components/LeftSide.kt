@@ -15,7 +15,6 @@ import com.varabyte.kobweb.silk.components.forms.*
 import com.varabyte.kobweb.silk.components.layout.Surface
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.addVariantBase
 import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -29,6 +28,8 @@ import org.example.porfolio.styles.ButtonStyle
 import org.example.porfolio.styles.SocialIconStyle
 import org.example.porfolio.util.Res
 import org.jetbrains.compose.web.css.*
+import com.varabyte.kobweb.silk.components.forms.Button
+
 
 val LeftSideStyle = CssStyle {
 

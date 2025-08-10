@@ -49,7 +49,7 @@ fun RightSide() {
 @Composable
 fun ResponsiveSrcSetImage() {
     Img(
-        src = "/images/image_split_1.webp", // fallback
+        src = "/porfolio/image_split_1.webp", // fallback
         attrs = {
             attr(
                 "srcset", """
